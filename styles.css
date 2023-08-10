@@ -1,0 +1,88 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  font-family: Gotham Rounded, sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, hsl(243, 94%, 21%), hsl(149, 21%, 77%)); /* Greenish gradient */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.clock {
+  width: 350px; /* Increased size */
+  height: 350px; /* Increased size */
+  background-color: rgba(235, 231, 231, 0.95); /* Lighter gray for a cleaner look */
+  border-radius: 50%;
+  border: 4px solid hsl(247, 92%, 20%); /* Forest-green border */
+  position: relative;
+}
+
+.clock .number {
+  --rotation: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform: rotate(var(--rotation));
+  font-size: 1.8rem; /* Slightly larger font */
+  color: hsl(0, 0%, 1%); /* Forest-green for numbers */
+}
+
+/* Since rotation for numbers is the same, no need to repeat it */
+.clock .number1 { --rotation: 30deg; }
+.clock .number2 { --rotation: 60deg; }
+.clock .number3 { --rotation: 90deg; }
+.clock .number4 { --rotation: 120deg; }
+.clock .number5 { --rotation: 150deg; }
+.clock .number6 { --rotation: 180deg; }
+.clock .number7 { --rotation: 210deg; }
+.clock .number8 { --rotation: 240deg; }
+.clock .number9 { --rotation: 270deg; }
+.clock .number10 { --rotation: 300deg; }
+.clock .number11 { --rotation: 330deg; }
+
+.clock .hand {
+  --rotation: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  border: 1px solid rgb(175, 17, 17);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform-origin: bottom;
+  z-index: 10;
+  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+
+.clock::after {
+  content: '';
+  position: absolute;
+  background-color: hsl(240, 100%, 0%); /* Forest-green for center dot */
+  z-index: 11;
+  width: 20px; /* Increased size */
+  height: 20px; /* Increased size */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.clock .hand.second {
+  width: 4px; /* Slightly thicker */
+  height: 47%; /* A bit longer */
+  background-color: hsl(15, 33%, 49%); /* Orange-red for seconds hand */
+}
+
+.clock .hand.minute {
+  width: 8px; /* Slightly thicker */
+  height: 42%; /* A bit longer */
+  background-color: hsl(228, 100%, 1%); /* Forest-green for minute hand */
+}
+
+.clock .hand.hour {
+  width: 12px; /* Slightly thicker */
+  height: 37%;
